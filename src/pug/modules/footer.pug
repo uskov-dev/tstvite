@@ -1,0 +1,176 @@
+-
+  let about = {
+    title: 'О компании',
+    links: [
+      {
+        label: 'О нас',
+      },
+      {
+        label: 'Отзывы покупателей',
+      },
+      {
+        label: 'Оптовые продажи',
+      },
+      {
+        label: 'Контакты',
+      },
+    ],
+  };
+
+-
+  let catalog = {
+    title: 'Каталог товаров',
+    links: [
+      {
+        label: 'Электроинструмент',
+      },
+      {
+        label: 'Бензоинструмент',
+      },
+      {
+        label: 'Садовая техника',
+      },
+      {
+        label: 'Расходные материалы и оснастка',
+      },
+      {
+        label: 'Пневмоинструмент',
+      },
+      {
+        label: 'Станки',
+      },
+      {
+        label: 'Силовая техника',
+      },
+      {
+        label: 'Уборка и клининг',
+      },
+      {
+        label: 'Ручные инструменты',
+      },
+      {
+        label: 'Запчасти',
+      },
+    ],
+  };
+
+-
+  let service = {
+    title: 'Сервисный центр',
+    links: [
+      {
+        label: 'Ремонт электро и бензо инструмента',
+      },
+      {
+        label: 'Ремонт насосного оборудования',
+      },
+      {
+        label: 'Ремонт бытовой техники',
+      },
+      {
+        label: 'Ремонт мясорубок',
+      },
+    ],
+  };
+
+-
+  let buyers = {
+    title: 'Покупателям',
+    class: '_buyers',
+    links: [
+      {
+        label: 'Доставка и возврат',
+      },
+      {
+        label: 'Самовывоз',
+      },
+      {
+        label: 'Наши акции',
+      },
+      {
+        label: 'Реквизиты',
+      },
+      {
+        label: 'Сертификаты',
+      },
+    ],
+  };
+
+-
+  let connect = {
+    title: 'Обратная связь',
+    class: '_connect',
+    links: [
+      {
+        icon: 'whatsapp',
+        label: 'WhatsApp',
+      },
+      {
+        icon: 'telegram',
+        label: 'Telegram',
+      },
+      {
+        icon: 'vk',
+        label: 'Вконтакте',
+      },
+      {
+        icon: 'viber',
+        label: 'Viber',
+      },
+      {
+        icon: 'comment',
+        label: 'Оставить отзыв',
+      },
+    ],
+  };
+
+-
+  let networks = [
+    {
+      icon: 'facebook',
+      url: '#',
+    },
+    {
+      icon: 'twitter',
+      url: '#',
+    },
+    {
+      icon: 'vk',
+      url: '#',
+    },
+  ];
+
+footer.footer
+  .container
+    .footer__wrapper
+      .footer__content
+        .footer__section
+          .footer__column._about
+            +logo._white-theme.footer__logo
+            +menu(about).footer__menu._light
+          .footer__column._catalog
+            +menu(catalog).footer__menu._light
+          .footer__networks
+            h6.h5.footer__networks-title Мы в соцсетях
+            ul.footer__networks-list
+              each item in networks
+                li.footer__networks-item
+                  a.footer__networks-link(href=item.url || '#' target="_blank")
+                    if item.icon
+                      +svg(item.icon)
+        .footer__section
+          .footer__column
+            +menu(service).footer__menu._light._service
+            +menu(buyers).footer__menu._light._buyers
+          .footer__column
+            +menu(connect).footer__menu._light._connect
+            .footer__contacts
+              a.footer__telephone(href="tel:88314230524") 8 831 423 05 24
+              .footer__working-mode Ежедневно с 9:00 до 20:00
+              +btn({
+                tag: 'button',
+                label: 'Заказать звонок',
+              })(type="button")._primary._small.footer__call-btn
+    .footer__info
+      p.footer__copyright © 2012–2023 Drinwer
+      a.footer__policy(href="#") Политика обработки персональных данных

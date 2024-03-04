@@ -1,0 +1,134 @@
+.panel {
+  $root: &;
+
+  border-bottom: 0.1rem solid var(--neutral-200);
+  background: var(--neutral-white);
+  &__content {
+    height: 3.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0 3.26rem;
+  }
+  &__menu {
+    display: none;
+    align-items: center;
+    gap: 0 3.26rem;
+    flex: 1 1 auto;
+    width: 100%;
+    margin: 0;
+    @include up(md) {
+      display: flex;
+    }
+    &-item {
+      flex: none;
+      position: relative;
+      @include hover {
+        #{$root}__menu-link {
+          color: var(--neon-700);
+        }
+        #{$root}__dropdown {
+          display: block;
+        }
+      }
+      &._hidden {
+        display: none;
+        @include up(xl) {
+          display: block;
+        }
+      }
+    }
+    &-link {
+      display: flex;
+      align-items: center;
+      font-size: 1.4rem;
+      line-height: 142.857%;
+      color: var(--neutral-700);
+      @include transition(color);
+      cursor: pointer;
+      @include hover {
+        color: var(--neon-700);
+      }
+      ._active > & {
+        color: var(--neon-700);
+      }
+    }
+    &-name {
+      display: block;
+      flex: none;
+    }
+    svg {
+      width: 1.6rem;
+      height: 1.6rem;
+      flex: none;
+    }
+    &-name + svg {
+      margin-left: 0.4rem;
+    }
+  }
+  &__dropdown {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    padding-top: 0.8rem;
+    width: 22.8rem;
+    display: none;
+    z-index: $z-index + 1;
+    &-list {
+      margin: 0;
+      background: var(--neutral-white);
+      border: 0.1rem solid var(--neutral-250);
+      border-radius: 0.4rem;
+      box-shadow: 0 0.4rem 1.4rem 0 rgba(0, 0, 0, 0.1);
+      padding: 1.6rem 2rem;
+    }
+    &-item {
+      & + & {
+        margin-top: 0.8rem;
+      }
+    }
+    &-link {
+      font-size: 1.4rem;
+      line-height: 142.857%;
+      display: block;
+      color: var(--neutral-700);
+      @include transition(color);
+      @include hover {
+        color: var(--neon-700);
+      }
+      ._active > & {
+        color: var(--neon-700);
+      }
+    }
+  }
+  &__city,
+  &__lk {
+    flex: none;
+    position: relative;
+    &-btn {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      @include transition(color);
+      color: var(--neutral-700);
+      font-size: 1.4rem;
+      line-height: 142.857%;
+      @include hover {
+        color: var(--neon-700);
+      }
+    }
+    svg {
+      flex: none;
+      width: 1.6rem;
+      height: 1.6rem;
+      position: relative;
+      top: -0.1rem;
+    }
+    &-label {
+      display: block;
+    }
+    svg + &-label {
+      margin-left: 0.4rem;
+    }
+  }
+}

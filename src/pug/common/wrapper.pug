@@ -1,0 +1,42 @@
+include ../utils/mixins
+
+include ../components/logo
+include ../components/btn
+include ../components/menu
+include ../components/field
+include ../components/section
+
+- let title = 'Магазин инструмента и запчастей';
+
+block config
+
+doctype html
+html(lang="ru")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    meta(name="format-detection" content="telephone=no")
+    meta(name="description" content="")
+    meta(property="og:url" content="")
+    meta(property="og:type" content="website")
+    meta(property="og:title" content=`${title}`)
+    meta(property="og:description" content="")
+    meta(property="og:image" content="")
+    meta(property="vk:image" content="")
+    title #{title}
+    link(rel="apple-touch-icon" sizes="180x180" href="#")
+    link(rel="icon" type="image/png" sizes="32x32" href="#")
+    link(rel="icon" type="image/png" sizes="16x16" href="#")
+    link(rel="shortcut icon" href="#")
+  body
+    .wrapper
+      .wrapper__content
+        block panel
+          include ../modules/panel
+        block header
+          include ../modules/header
+        block content
+      .wrapper__footer
+        block footer
+          include ../modules/footer
+    script(type="module" src="/src/js/index.js")

@@ -1,0 +1,12 @@
+mixin breadcrumbs(data)
+  section.breadcrumbs&attributes(attributes)
+    .container
+      .breadcrumbs__content
+        each item, index in data
+          if index == data.length - 1
+            span.breadcrumbs__element!=item
+          else
+            a.breadcrumbs__link(href="#")!=item
+            +svg('arrow-right')
+
+

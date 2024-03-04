@@ -1,0 +1,35 @@
+mixin billboard(data)
+  - let { title, text, list, picture, person } = data;
+
+  section.billboard&attributes(attributes)
+    .container
+      .billboard__content
+        .billboard__info
+          if title
+            h1.h1.billboard__title!=title
+          if picture
+            .billboard__picture
+              +picture(picture)
+          if person
+            .billboard__person
+              +picture(person)
+          if text
+            p.billboard__text!=text
+          if list
+            ul.billboard__list
+              each item in list
+                li.billboard__list-item
+                  +svg('approve')
+                  span.billboard__list-text!=item
+          form.billboard__form(action="#" method="POST")
+            +field({
+              name: 'telephone',
+              value: '',
+              placeholder: 'Номер телефона',
+              required: true,
+              error: 'Введите номер телефона',
+            }).billboard__form-field
+            +btn({
+              tag: 'button',
+              label: 'Заказать звонок'
+            })(type="submit" name="submit" class="_primary _big billboard__form-btn")

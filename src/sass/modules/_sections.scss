@@ -1,0 +1,27 @@
+.sections {
+  margin-bottom: 6.3rem;
+  @include up(md) {
+    margin-bottom: 8rem;
+  }
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -0.7rem -1.4rem;
+    @include up(xl) {
+      margin: 0 -1.2rem -2.4rem;
+    }
+  }
+  &__item {
+    flex: none;
+    width: 100%;
+    padding: 0 0.7rem 1.4rem;
+    display: flex;
+    @include up(md) {
+      width: math.div(100%, 2);
+    }
+    @include up(xl) {
+      width: math.div(100%, 3);
+      padding: 0 1.2rem 2.4rem;
+    }
+  }
+}

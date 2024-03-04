@@ -1,0 +1,7 @@
+@mixin up($name) {
+  $size: map.get($media, $name);
+
+  @media (min-width: $size) {
+    @content;
+  }
+}

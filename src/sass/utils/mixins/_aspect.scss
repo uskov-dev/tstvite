@@ -1,0 +1,13 @@
+@mixin aspect($width, $height) {
+  aspect-ratio: math.div($width, $height);
+
+  @supports not (aspect-ratio: math.div($width, $height)) {
+    &::before {
+      content: '';
+      float: left;
+      padding-top: calc((#{$height} / #{$width}) * 100%);
+    }
+
+    @include clearfix;
+  }
+}

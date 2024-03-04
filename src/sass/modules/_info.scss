@@ -1,0 +1,65 @@
+.info {
+  $root: &;
+
+  margin-bottom: 8.8rem;
+  &__wrapper {
+    @include up(xl) {
+      display: flex;
+    }
+    #{$root}._reverse & {
+      justify-content: flex-end;
+    }
+  }
+  &__picture {
+    flex: none;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 0.8rem;
+    @include aspect(330, 200);
+    margin-bottom: 2.4rem;
+    @include up(sm) {
+      @include aspect(930, 374);
+    }
+    @include up(xl) {
+      margin-right: 5rem;
+      width: 53.6rem;
+      margin-bottom: 0;
+      @include aspect(536, 322);
+    }
+    @include up(xxl) {
+      margin-right: 11.2rem;
+    }
+    #{$root}._reverse & {
+      order: 2;
+      @include up(xl) {
+        margin-right: 0;
+        margin-left: 5rem;
+      }
+      @include up(xxl) {
+        margin-left: 11.2rem;
+      }
+    }
+    img {
+      @include img-fit;
+    }
+  }
+  &__content {
+    flex: 1 1 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  &__title {
+    margin-bottom: 0;
+  }
+  &__title + &__text {
+    margin-top: 1.2rem;
+    @include up(xl) {
+      margin-top: 2.4rem;
+    }
+  }
+  &__text {
+    margin-bottom: -2.4rem;
+  }
+}

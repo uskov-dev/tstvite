@@ -1,0 +1,16 @@
+mixin menu(data)
+  - let { title, links } = data;
+  .menu.js-menu&attributes(attributes)
+    if title
+      .menu__head.js-menu-head
+        h6.h5.menu__title!=title
+        +svg('arrow-down')
+    if links
+      ul.menu__list.js-menu-list
+        each item in links
+          li.menu__item
+            a.menu__link(href="#")
+              if item.icon
+                span.menu__icon
+                  +svg(item.icon)
+              span.menu__label!=item.label

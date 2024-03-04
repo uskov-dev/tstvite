@@ -1,0 +1,10 @@
+mixin section(data)
+  - let { picture, name } = data;
+
+  a.section(href="#")
+    if picture
+      .section__picture
+        +picture(picture)
+    if name
+      h6.h5.section__name!=name
+    +svg('arrow-right-1')

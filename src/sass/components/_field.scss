@@ -1,0 +1,47 @@
+.field {
+  $root: &;
+
+  flex: 1 1 auto;
+  &__label {
+    display: block;
+    font-size: 1.4rem;
+    line-height: 142.857%;
+    color: var(--neutral-500);
+    margin-bottom: 0.8rem;
+    span {
+      color: var(--red);
+    }
+  }
+  &__content {
+    position: relative;
+  }
+  &__input {
+    display: block;
+    width: 100%;
+    height: 4.8rem;
+    padding: 0 1.6rem;
+    border: 0.1rem solid var(--neutral-300);
+    background: var(--neutral-white);
+    border-radius: 0.4rem;
+    @include transition(border-color);
+    outline: none;
+    font-size: 1.5rem;
+    line-height: normal;
+    @include hover {
+      border-color: var(--neutral-400);
+    }
+    &:focus {
+      border-color: var(--neutral-500);
+    }
+    &._error {
+      border-color: var(--red);
+    }
+  }
+  &__error {
+    font-size: 1.2rem;
+    line-height: 150%;
+    color: var(--red);
+    margin-top: 0.4rem;
+    display: none;
+  }
+}

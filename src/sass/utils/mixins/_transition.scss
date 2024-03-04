@@ -1,0 +1,9 @@
+@mixin transition($props) {
+  $list: ();
+
+  @each $prop in $props {
+    $list: list.append($list, ($prop $duration $timing-fn), $separator: comma);
+  }
+
+  transition: $list;
+}

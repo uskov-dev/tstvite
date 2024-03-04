@@ -1,0 +1,39 @@
+mixin picture(data)
+  -
+    const media = {
+      xxl: 1440,
+      xl: 1280,
+      lg: 990,
+      md: 768,
+      sm: 576,
+      xs: 0,
+    };
+  - const {path, sizes} = data;
+
+  if path
+    - const srcset = path.split('.').slice(0, -1).join('.') + '.webp';
+    picture
+      each screen, type in media
+        if sizes[type]
+          - const [width, height] = sizes[type];
+
+          if type != 'xs'
+            source(
+              type="image/webp"
+              srcset=`${srcset} 1x, ${srcset} 2x`
+              media=`(min-width: ${screen}px)`
+              width!=width
+              height!=height
+            )
+          else
+            source(
+              type="image/webp"
+              srcset=`${srcset} 1x, ${srcset} 2x`
+              width!=width
+              height!=height
+            )
+            img(
+              src=path
+              width!=width
+              height!=height
+            )&attributes(attributes)

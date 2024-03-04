@@ -1,0 +1,106 @@
+.btn {
+  border: 0.1rem solid transparent;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  line-height: 142.857%;
+  font-weight: 500;
+  cursor: pointer;
+  width: fit-content;
+  padding: 0.9rem 1.5rem;
+  @include transition((color, background-color, border-color));
+  &:disabled,
+  &._disabled {
+    cursor: not-allowed;
+  }
+  svg {
+    flex: none;
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+  &__label {
+    display: block;
+  }
+  svg + &__label,
+  &__label + svg {
+    margin-left: 0.8rem;
+  }
+  &._big {
+    padding-top: 1.3rem;
+    padding-bottom: 1.3rem;
+    font-size: 1.6rem;
+    line-height: 125%;
+    svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  &._small {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 1.3rem;
+    line-height: 153.846%;
+  }
+  &._primary,
+  &._secondary {
+    color: var(--neutral-white);
+    &:disabled,
+    &._disabled {
+      background-color: var(--neutral-200);
+      border-color: var(--neutral-200);
+      color: var(--neutral-400);
+    }
+  }
+  &._primary {
+    background: var(--orange-500);
+    border-color: var(--orange-500);
+    @include hover {
+      &:not(:disabled, ._disabled, :active) {
+        background-color: var(--orange-400);
+        border-color: var(--orange-400);
+      }
+    }
+    &:active:not(:disabled, ._disabled) {
+      background-color: var(--orange-700);
+      border-color: var(--orange-700);
+    }
+  }
+  &._secondary {
+    background: var(--neutral-800);
+    border-color: var(--neutral-800);
+    @include hover {
+      &:not(:disabled, ._disabled, :active) {
+        background-color: var(--neutral-700);
+        border-color: var(--neutral-700);
+      }
+    }
+    &:active:not(:disabled, ._disabled) {
+      background-color: var(--neutral-900);
+      border-color: var(--neutral-900);
+    }
+  }
+  &._ghost {
+    color: var(--neutral-800);
+    border-color: var(--neutral-300);
+    background: none;
+    @include hover {
+      &:not(:disabled, ._disabled, :active) {
+        border-color: var(--neutral-700);
+        color: var(--neutral-700);
+      }
+    }
+    &:active:not(:disabled, ._disabled) {
+      color: var(--neutral-900);
+      border-color: var(--neutral-900);
+    }
+    &:disabled,
+    &._disabled {
+      border-color: var(--neutral-300);
+      color: var(--neutral-400);
+    }
+  }
+}

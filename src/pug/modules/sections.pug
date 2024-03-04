@@ -1,0 +1,7 @@
+mixin sections(data)
+  section.sections
+    .container
+      .sections__list
+        each item in data
+          .sections__item
+            +section(item)

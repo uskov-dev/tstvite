@@ -1,0 +1,13 @@
+mixin btn(data = {})
+  - let { tag = 'button', label, icons } = data;
+
+  #{tag}.btn&attributes(attributes)
+    if block
+      block
+    else
+      if icons && icons.left
+        +svg(icons.left)
+      if label
+        span.btn__label!=label
+      if icons && icons.right
+        +svg(icons.right)

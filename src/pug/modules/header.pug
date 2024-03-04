@@ -1,0 +1,80 @@
+-
+  let coinci = [
+    '<strong>дрель</strong>',
+    '<strong>дрель</strong> шуруповерт',
+    '<strong>дрель</strong> ударная',
+    '<strong>дрель</strong> шуруповерт аккумуляторная',
+    '<strong>дрель</strong> шуруповерт сетевая',
+  ];
+
+-
+  let links = [
+    {
+      icon: 'compare',
+      count: 0,
+    },
+    {
+      icon: 'heart',
+      count: 5,
+    },
+    {
+      icon: 'shopping-cart',
+      count: 3,
+      label: 'Пусто',
+    },
+  ];
+
+header.header.js-header
+  .header__plug
+  .header__panel
+    .header__wrapper
+      .container.header__container
+        .header__content
+          .header__left-bar
+            button.header__nav-btn(type="button")
+              span
+              span
+              span
+            +logo._dark-theme.header__logo
+            +btn(type="button")._primary.header__catalog-btn
+              span.header__catalog-btn-icon
+                span
+                span
+                span
+              span.header__catalog-btn-label Каталог товаров
+          .header__central-bar
+            form(method="POST")
+              .header__search
+                .header__search-field
+                  button.header__search-btn(type="submit")
+                    +svg('search-16')
+                  button.header__search-reset(type="reset")
+                    +svg('close')
+                  input.header__search-input(type="text" name="search" value="" placeholder="Поиск по сайту" autocomplete="off")
+                .header__search-options
+                  .header__search-bg
+                  .header__search-content
+                    ul.header__search-list
+                      each item in coinci
+                        li.header__search-clue
+                          a.header__search-link(href="#")
+                            +svg('search-16')
+                            span.header__search-text!=item
+          .header__right-bar
+            .header__contacts
+              a.header__telephone(href="tel:88314230524")
+                +svg('phone')
+                span.header__telephone-number 8 831 423 05 24
+              button.header__call-link(type="button") Заказать звонок
+            .header__link-list
+              each item in links
+                a.header__link(href="#" class=item.count > 0 ? '_active' : '')
+                  if item.icon || item.count
+                    span.header__link-icon
+                      if item.count
+                        span.header__link-count!=item.count
+                      if item.icon
+                        +svg(item.icon)
+                  if item.label
+                    span.header__link-label!=item.label
+

@@ -1,0 +1,20 @@
+mixin steps(data)
+  - let { title, points } = data
+
+  section.steps
+    .container
+      if title
+        h3.h3.steps__title!=title
+      if points
+        .steps__content
+          each item, index in points
+            .steps__item
+              if item.icon
+                .steps__item-picture
+                  .steps__item-frame
+                    +svg('b-frame')(class=item.icon.color ? `_${item.icon.color}` : '')
+                  +svg(item.icon.name)
+              if item.text
+                p.steps__item-text!=item.text
+              if index != points.length - 1
+                +svg('steps-arrow').steps__item-arrow

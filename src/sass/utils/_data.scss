@@ -1,0 +1,54 @@
+$roboto: 'Roboto';
+$rubik: 'Rubik';
+$akrobat: 'Akrobat';
+$fonts: (
+  roboto: (
+    $roboto,
+    sans-serif,
+  ),
+  rubik: (
+    $rubik,
+    sans-serif,
+  ),
+  akrobat: (
+    $akrobat,
+    sans-serif,
+  ),
+);
+$font-size: 10px;
+
+$indents: 1.5rem;
+$container: (
+  xxl: 132rem,
+  xl: 111rem,
+  lg: 93rem,
+  md: 69rem,
+  sm: 51rem,
+  xs: 100%,
+);
+$media: (
+  xxl: 1440px,
+  xl: 1280px,
+  lg: 990px,
+  md: 768px,
+  sm: 576px,
+  xs: 0,
+);
+
+$sizes: (
+  header: (
+    xl: 9.8rem,
+    md: 8.8rem,
+    xs: 6.4rem,
+  ),
+  search: (
+    xl: 9.8rem,
+    md: 8.8rem,
+    xs: 5.2rem,
+  ),
+);
+
+$duration: 300ms;
+$timing-fn: ease;
+
+$z-index: 1000;

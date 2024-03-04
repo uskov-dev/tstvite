@@ -1,0 +1,16 @@
+mixin info(data)
+  - let { title, text, picture } = data;
+
+  section.info&attributes(attributes)
+    .container
+      .info__wrapper
+        if picture
+          .info__picture
+            +picture(picture)
+        if title || text
+          .info__content
+            .info__description
+              if title
+                h3.h3.info__title!=title
+              if text
+                .info__text!=text

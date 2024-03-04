@@ -1,0 +1,22 @@
+mixin benefits(data)
+  - let { title, list } = data;
+
+  section.benefits&attributes(attributes)
+    .container
+      if title
+        h3.h3.benefits__title!=title
+      if list
+        .benefits__content
+          each item in list
+            .benefits__item
+              if item.icon
+                .benefits__item-picture
+                  .benefits__item-frame
+                    +svg('b-frame')(class=item.color ? `_${item.color}` : '')
+                  +svg(item.icon)
+              if item.title || item.text
+                .benefits__item-info
+                  if item.title
+                    h6.h6.benefits__item-title!=item.title
+                  if item.text
+                    p.benefits__item-text!=item.text

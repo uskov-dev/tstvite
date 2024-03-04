@@ -1,0 +1,507 @@
+.header {
+  $root: &;
+  position: relative;
+  margin-bottom: 0.8rem;
+  &__plug {
+    @each $name, $size in map.get($sizes, header) {
+      @if map.get($media, $name) {
+        @if $name != 'xs' {
+          @include up($name) {
+            height: $size;
+          }
+        } @else {
+          @include up($name) {
+            height: $size + map.get(map.get($sizes, search), $name);
+          }
+        }
+      }
+    }
+  }
+  &__panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--neutral-white);
+    z-index: $z-index;
+    #{$root}._floating & {
+      position: fixed;
+    }
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 0.1rem;
+      background: var(--neutral-200);
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+  }
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    gap: 0 2.4rem;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    @include up(md) {
+      flex-wrap: nowrap;
+    }
+    @include up(xl) {
+      gap: 0 3rem;
+    }
+    @include up(xxl) {
+      gap: 0 4rem;
+    }
+  }
+  &__left-bar,
+  &__right-bar {
+    flex: none;
+    display: flex;
+    align-items: center;
+    @each $name, $size in map.get($sizes, header) {
+      @if map.get($media, $name) {
+        @include up($name) {
+          height: $size;
+        }
+      }
+    }
+  }
+  &__left-bar {
+    order: 1;
+    gap: 0 2rem;
+    @include up(xl) {
+      gap: 0 3rem;
+    }
+    @include up(xxl) {
+      gap: 0 4rem;
+    }
+  }
+  &__nav-btn {
+    position: relative;
+    flex: none;
+    width: 4rem;
+    height: 4rem;
+    cursor: pointer;
+    margin: 0 -0.7rem;
+    display: block;
+    @include hover {
+      span {
+        background-color: var(--orange-500);
+      }
+    }
+    @include up(xl) {
+      display: none;
+    }
+    span {
+      position: absolute;
+      left: 0.7rem;
+      width: 2.6rem;
+      height: 0.2rem;
+      background: var(--neutral-900);
+      border-radius: 0.5rem;
+      @include transition(background-color);
+      &:nth-child(1) {
+        top: 1.1rem;
+      }
+      &:nth-child(2) {
+        top: 1.9rem;
+      }
+      &:nth-child(3) {
+        top: 2.7rem;
+      }
+    }
+  }
+  &__logo {
+    width: 13rem;
+    height: 3.5rem;
+    @include up(md) {
+      width: 14.8rem;
+      height: 4rem;
+    }
+    @include up(lg) {
+      width: 15.6rem;
+      height: 4.2rem;
+    }
+  }
+  &__catalog-btn {
+    flex: none;
+    height: 4rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    display: none;
+    @include up(xl) {
+      display: flex;
+    }
+    &-icon {
+      flex: none;
+      width: 2.4rem;
+      height: 2.4rem;
+      position: relative;
+      display: block;
+      span {
+        position: absolute;
+        left: 0.2rem;
+        width: 2rem;
+        height: 0.2rem;
+        background: var(--neutral-white);
+        border-radius: 0.5rem;
+        @include transition((transform, opacity, top));
+        &:nth-child(1) {
+          top: 0.5rem;
+        }
+        &:nth-child(2) {
+          top: 1.1rem;
+        }
+        &:nth-child(3) {
+          top: 1.7rem;
+        }
+      }
+    }
+    &._active &-icon {
+      span {
+        &:nth-child(1) {
+          transform: rotate(45deg);
+          top: 1.1rem;
+        }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        &:nth-child(3) {
+          transform: rotate(-45deg);
+          top: 1.1rem;
+        }
+      }
+    }
+    &-label {
+      display: block;
+      position: relative;
+      top: 0.1rem;
+    }
+    &-icon + &-label {
+      padding-left: 0.8rem;
+    }
+  }
+  &__central-bar {
+    flex: 1 1 auto;
+    width: 100%;
+    order: 3;
+    display: flex;
+    @include up(md) {
+      order: 2;
+      align-items: center;
+    }
+    @each $name, $size in map.get($sizes, search) {
+      @if map.get($media, $name) {
+        @include up($name) {
+          height: $size;
+        }
+      }
+    }
+    form {
+      display: block;
+      width: 100%;
+      flex: none;
+    }
+  }
+  &__search {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    flex: none;
+    &-field {
+      position: relative;
+      overflow: hidden;
+      z-index: 2;
+    }
+    &-btn,
+    &-reset {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 2;
+      width: 4rem;
+      height: 4rem;
+      cursor: pointer;
+      color: var(--neutral-400);
+      @include transition(color);
+      @include hover {
+        color: var(--neutral-800);
+      }
+      svg {
+        width: 1.6rem;
+        height: 1.6rem;
+        @include img-centering;
+      }
+    }
+    &-btn {
+      right: 0;
+      display: block;
+    }
+    &-reset {
+      right: 4rem;
+      display: none;
+    }
+    &._filled &-reset {
+      display: block;
+    }
+    &-btn + &-reset {
+      &::before {
+        content: '';
+        display: block;
+        width: 0.1rem;
+        height: 1.6rem;
+        background-color: var(--neutral-250);
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+      }
+    }
+    &-input {
+      display: block;
+      width: 100%;
+      height: 4rem;
+      border: 0.1rem solid var(--neutral-150);
+      border-radius: 0.4rem;
+      background: var(--neutral-150);
+      position: relative;
+      z-index: 1;
+      font-size: 1.5rem;
+      font-weight: 400;
+      padding: 0 4rem 0 1.6rem;
+      @include transition((border-color, background-color));
+      @include placeholder {
+        color: var(--neutral-400);
+      }
+      &:focus {
+        background-color: var(--neutral-white);
+        border-color: var(--neutral-250);
+      }
+    }
+    &._filled &-input {
+      padding-right: 8rem;
+    }
+    &-options {
+      position: absolute;
+      top: -0.8rem;
+      width: calc(100% + 1.6rem);
+      left: -0.8rem;
+      display: none;
+    }
+    &._focus &-options {
+      display: block;
+    }
+    &-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26, 26, 28, 0.3);
+    }
+    &-content {
+      background: var(--neutral-white);
+      border-radius: 0.4rem;
+      width: 100%;
+      padding: 5.6rem 0.8rem 0;
+      position: relative;
+      z-index: 1;
+    }
+    &-list {
+      margin: 0;
+      display: none;
+      padding-bottom: 0.8rem;
+    }
+    &._filled &-list {
+      display: block;
+    }
+    &-link {
+      display: flex;
+      align-items: center;
+      position: relative;
+      font-size: 1.4rem;
+      line-height: 142.857%;
+      color: var(--neutral-800);
+      @include transition(color);
+      @include hover {
+        color: var(--neon-700);
+      }
+      strong {
+        color: inherit;
+      }
+      svg {
+        width: 1.6rem;
+        height: 1.6rem;
+        color: var(--neutral-400);
+        flex: none;
+        margin: 0 0.8rem;
+      }
+    }
+    &-text {
+      display: block;
+      flex: 1 1 auto;
+      padding: 0.8rem;
+      svg + & {
+        padding-left: 0;
+      }
+    }
+    &-clue + &-clue &-text {
+      border-top: 0.1rem solid var(--neutral-200);
+    }
+  }
+  &__right-bar {
+    order: 2;
+    gap: 0 2.4rem;
+    @include up(md) {
+      order: 3;
+    }
+    @include up(xl) {
+      gap: 0 3rem;
+    }
+    @include up(xxl) {
+      gap: 0 4.8rem;
+    }
+  }
+  &__left-bar + &__right-bar,
+  &__central-bar + &__right-bar {
+    @include up(xxl) {
+      padding-left: 0.8rem;
+    }
+  }
+  &__contacts {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex: none;
+    @include up(lg) {
+      display: flex;
+    }
+  }
+  &__telephone {
+    display: flex;
+    align-items: center;
+    svg {
+      width: 2.4rem;
+      height: 2.4rem;
+      color: var(--orange-500);
+      position: relative;
+      top: 0.1rem;
+      flex: none;
+      display: none;
+      margin-right: 0.8rem;
+      @include up(lg) {
+        display: block;
+      }
+    }
+    &-number {
+      display: block;
+      font: 800 list.slash(2rem, 150%) map.get($fonts, akrobat);
+      color: var(--neutral-800);
+      @include hover {
+        color: var(--neutral-800);
+      }
+    }
+  }
+  &__call-link {
+    position: relative;
+    display: block;
+    font-size: 1.4rem;
+    line-height: 142.857%;
+    color: var(--neutral-700);
+    @include transition(color);
+    cursor: pointer;
+    @include hover {
+      color: var(--orange-700);
+    }
+    @include up(lg) {
+      margin-left: 3.2rem;
+    }
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 0.1rem;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background: linear-gradient(
+          to right,
+          var(--orange-500) 0%,
+          var(--orange-500) 50%,
+          rgba(251, 132, 42, 0) 50%,
+          rgba(251, 132, 42, 0) 100%
+        )
+        left bottom / 0.3rem 0.1rem repeat-x;
+    }
+  }
+  &__link-list {
+    display: flex;
+    align-items: center;
+    margin-left: -0.8rem;
+    margin-right: -0.8rem;
+    @include up(md) {
+      gap: 0 0.4rem;
+    }
+    @include up(xxl) {
+      gap: 0 0.8rem;
+    }
+  }
+  &__link {
+    display: flex;
+    align-items: center;
+    flex: none;
+    color: var(--neutral-800);
+    @include transition(color);
+    height: 4rem;
+    padding: 0 0.8rem;
+    @include hover {
+      color: var(--orange-500);
+    }
+    &-icon {
+      position: relative;
+      width: 2.4rem;
+      height: 2.4rem;
+      flex: none;
+      display: block;
+      svg {
+        @include img-centering;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    &-count {
+      position: absolute;
+      border: 0.2rem solid var(--neutral-white);
+      border-radius: 1rem;
+      background: var(--red);
+      text-align: center;
+      color: var(--neutral-white);
+      font: 500 list.slash(1.2rem, math.div(16, 12)) map.get($fonts, rubik);
+      min-width: 2rem;
+      height: 2rem;
+      top: -0.7rem;
+      left: 1.4rem;
+      padding: 0 0.4rem;
+      z-index: 2;
+      display: none;
+    }
+    &._active &-count {
+      display: block;
+    }
+    &-label {
+      display: none;
+      flex: none;
+      font-size: 1.4rem;
+      font-weight: 500;
+      line-height: 142.857%;
+      @include up(lg) {
+        display: block;
+      }
+    }
+    &-icon + &-label {
+      padding-left: 0.8rem;
+    }
+  }
+}

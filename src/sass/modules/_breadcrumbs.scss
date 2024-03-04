@@ -1,0 +1,51 @@
+.breadcrumbs {
+  padding-top: 0.8rem;
+  padding-bottom: 1.6rem;
+  &__content {
+    overflow-y: hidden;
+    overflow-x: auto;
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+    font-size: 1.2rem;
+    line-height: 150%;
+    color: var(--neutral-600);
+    white-space: nowrap;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    margin: 0 -#{$indents};
+    padding: 0 #{$indents};
+    @include up(sm) {
+      overflow: visible;
+      flex-wrap: wrap;
+      white-space: normal;
+      margin: 0;
+      padding: 0;
+    }
+    &::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+  }
+  &__link {
+    color: var(--neutral-600);
+    @include transition(color);
+    @include hover {
+      color: var(--orange-700);
+    }
+  }
+  &__link,
+  &__element {
+    display: block;
+    flex-shrink: 0;
+    @include up(sm) {
+      flex-shrink: 1;
+    }
+  }
+  svg {
+    flex: none;
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+}

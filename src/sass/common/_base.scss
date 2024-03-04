@@ -1,0 +1,164 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+html {
+  font-size: $font-size;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  font: 400 list.slash(1.6rem, 150%) map.get($fonts, roboto);
+  letter-spacing: normal;
+  background: var(--neutral-white);
+  color: var(--neutral-700);
+}
+a {
+  color: var(--orange-500);
+  text-decoration: none;
+  @include transition(color);
+  @include hover {
+    color: var(--orange-700);
+  }
+}
+i,
+em {
+  font-style: italic;
+}
+b,
+strong {
+  font-weight: 500;
+  color: var(--neutral-800);
+}
+small {
+  font-size: 75%;
+}
+p {
+  margin: 0 0 2.4rem;
+}
+q {
+  margin: 0 0 2.4rem;
+  display: block;
+  padding-left: 3rem;
+  quotes: none;
+  font-weight: 500;
+  color: var(--neutral-800);
+  border-left: 0.2rem solid var(--orange-500);
+}
+ul,
+ol {
+  list-style: none;
+  margin: 0 0 2.4rem;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font: {
+    family: map.get($fonts, akrobat);
+    weight: 800;
+  }
+  color: var(--neutral-800);
+  text-transform: uppercase;
+  margin: 0 0 2.3rem;
+}
+h1,
+.h1 {
+  font-size: 4rem;
+  line-height: 125%;
+}
+h2,
+.h2 {
+  font-size: 3.4rem;
+  line-height: 129.412%;
+}
+h3,
+.h3 {
+  font-size: 2.6rem;
+  line-height: 138.462%;
+}
+h4,
+.h4 {
+  font-size: 2rem;
+  line-height: 150%;
+}
+h5,
+.h5 {
+  font-size: 1.8rem;
+  line-height: 133.333%;
+}
+h6,
+.h6 {
+  font-size: 1.6rem;
+  line-height: 137.5%;
+}
+picture {
+  display: block;
+}
+img {
+  display: block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+svg {
+  display: block;
+  overflow: hidden;
+}
+input,
+textarea {
+  color: var(--neutral-800);
+  @include placeholder {
+    color: var(--neutral-500);
+    opacity: 1;
+  }
+  @include autofill {
+    -webkit-text-fill-color: var(--neutral-800);
+  }
+}
+input::-ms-clear {
+  display: none;
+}
+button {
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+  background: none;
+  white-space: normal;
+  text-align: left;
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $indents;
+  padding-right: $indents;
+  min-width: 36rem;
+  width: 100%;
+  @each $name, $size in $container {
+    @if map.get($media, $name) {
+      @if $name != 'xs' {
+        @include up($name) {
+          max-width: calc($size + ($indents * 2));
+        }
+      }
+    }
+  }
+}

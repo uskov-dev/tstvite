@@ -1,0 +1,23 @@
+mixin field(data = {})
+  -
+    let {
+      label,
+      type,
+      name,
+      value,
+      placeholder,
+      required,
+      error,
+    } = data;
+  .field.js-field&attributes(attributes)
+    if label
+      label.field__label!=label
+        if required
+          span!=' *'
+    .field__content
+      if type == 'textarea'
+        textarea.field__textarea.js-field-textarea(name!=name placeholder!=placeholder required!=required)!=value
+      else
+        input.field__input.js-field-input(type=type || 'text' name!=name value!=value placeholder!=placeholder autocomplete="off" required!=required)
+      if error
+        span.field__error.js-field-error!=error

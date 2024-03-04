@@ -1,0 +1,253 @@
+.billboard {
+  $root: &;
+
+  padding-top: 1.6rem;
+  margin-bottom: 7.2rem;
+  &__content {
+    background: var(--neutral-100);
+    padding: 4rem 3rem 5rem;
+    position: relative;
+    overflow: hidden;
+    @include up(md) {
+      padding: 5rem 5rem 6.2rem;
+    }
+    @include up(lg) {
+      display: flex;
+      align-items: center;
+      min-height: 40rem;
+      padding-right: 0;
+      padding-left: 4rem;
+    }
+    @include up(xl) {
+      padding-left: 5rem;
+      min-height: 45.2rem;
+    }
+    @include up(xxl) {
+      padding: 8.4rem 0 8.4rem 11.2rem;
+      min-height: 52rem;
+    }
+  }
+  &__info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 2.4rem 0;
+    @include up(lg) {
+      width: 40rem;
+    }
+    @include up(xl) {
+      width: 46rem;
+    }
+    @include up(xxl) {
+      width: 51.2rem;
+    }
+  }
+  &__title {
+    margin: 0;
+    text-align: center;
+    font-size: 3rem;
+    position: relative;
+    z-index: 1;
+    @include up(md) {
+      font-size: 4rem;
+    }
+    @include up(lg) {
+      font-size: 3.3rem;
+      text-align: left;
+    }
+    @include up(xl) {
+      font-size: 3.8rem;
+    }
+    @include up(xxl) {
+      font-size: 4rem;
+    }
+    span {
+      @include up(md) {
+        display: block;
+      }
+    }
+  }
+  &__picture {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    background: var(--neutral-100);
+    @include aspect(584, 448);
+    width: 100%;
+    @include up(sm) {
+      width: 41rem;
+    }
+    @include up(md) {
+      width: 50rem;
+    }
+    @include up(lg) {
+      margin-left: 0;
+      margin-right: 0;
+      position: absolute;
+      right: 4rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 41rem;
+    }
+    @include up(xl) {
+      right: 5rem;
+      width: 50rem;
+    }
+    @include up(xxl) {
+      right: 5.6rem;
+      width: 58.4rem;
+    }
+    img {
+      max-height: 100%;
+      mix-blend-mode: multiply;
+      @include img-centering;
+      height: auto;
+      width: auto;
+    }
+  }
+  &__person {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    @include aspect(592, 520);
+    margin: -1rem auto 1rem;
+    @include up(sm) {
+      width: 41rem;
+    }
+    @include up(md) {
+      width: 45rem;
+    }
+    @include up(lg) {
+      margin: 0;
+      position: absolute;
+      overflow: visible;
+      right: 1rem;
+      bottom: 0;
+      height: 100%;
+    }
+    @include up(xl) {
+      width: 51.5rem;
+    }
+    @include up(xxl) {
+      width: 59.2rem;
+    }
+    &::before {
+      content: '';
+      display: block;
+      width: 100%;
+      position: absolute;
+      border-radius: 50%;
+      background: var(--orange-150);
+      bottom: -27%;
+      left: 50%;
+      transform: translateX(-50%);
+      @include aspect(592, 592);
+      @include up(lg) {
+        bottom: -8.5rem;
+      }
+      @include up(xxl) {
+        bottom: -12.1rem;
+      }
+    }
+    img {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: auto;
+      height: auto;
+      max-height: 100%;
+      @include up(lg) {
+        width: 48rem;
+        left: -2.6rem;
+        max-width: none;
+        max-height: none;
+      }
+      @include up(xl) {
+        width: 52rem;
+      }
+      @include up(xxl) {
+        width: 59.7rem;
+      }
+    }
+  }
+  &__text {
+    margin: 0;
+    color: var(--neutral-800);
+    position: relative;
+    z-index: 1;
+  }
+  &__list {
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    &-item {
+      display: flex;
+      align-items: flex-start;
+      font-size: 1.5rem;
+      line-height: 133.333%;
+      color: var(--neutral-900);
+      & + & {
+        margin-top: 0.8rem;
+      }
+      svg {
+        flex: none;
+        width: 1.6rem;
+        height: 1.6rem;
+        margin-top: 0.1rem;
+        color: var(--green-900);
+      }
+    }
+    &-text {
+      display: block;
+    }
+    svg + &-text {
+      margin-left: 0.8rem;
+    }
+  }
+  &__form {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: 1rem 1.4rem;
+    flex-direction: column;
+    @include up(md) {
+      flex-direction: row;
+    }
+    @include up(xl) {
+      gap: 1rem 2.4rem;
+    }
+    * + & {
+      @include up(lg) {
+        padding-top: 1.1rem;
+      }
+      @include up(xxl) {
+        padding-top: 2.4rem;
+      }
+    }
+    &-field {
+      width: 100%;
+    }
+    &-btn {
+      width: 100%;
+      height: 4.8rem;
+      flex: none;
+      @include up(md) {
+        width: 16.5rem;
+      }
+      @include up(xl) {
+        width: 18.4rem;
+      }
+    }
+  }
+  &__list + &__form {
+    @include up(lg) {
+      padding-top: 0.5rem;
+    }
+    @include up(xxl) {
+      padding-top: 0.8rem;
+    }
+  }
+}

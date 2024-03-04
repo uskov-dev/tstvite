@@ -1,0 +1,61 @@
+-
+  let menu = [
+    {
+      class: '',
+      name: 'Сервисный центр',
+    },
+    {
+      class: '',
+      name: 'Заточка',
+    },
+    {
+      class: '_hidden',
+      name: 'Доставка и оплата',
+      dropdown: [
+        'Доставка курьером',
+        'Доставка транспортной компанией',
+        'Самовывоз',
+        'Способы оплаты',
+      ],
+    },
+    {
+      class: '_hidden',
+      name: 'О сервисе',
+    },
+    {
+      class: '_hidden',
+      name: 'Компаниям',
+    },
+    {
+      class: '',
+      name: 'Контакты',
+    },
+  ];
+
+.panel
+  .container
+    .panel__content
+      ul.panel__menu
+        each item in menu
+          li.panel__menu-item(class!=item.class)
+            if item.dropdown
+              span.panel__menu-link
+                span.panel__menu-name!=item.name
+                +svg('arrow-down')
+              .panel__dropdown
+                ul.panel__dropdown-list
+                  each droplink in item.dropdown
+                    li.panel__dropdown-item
+                      a.panel__dropdown-link(href="#")!=droplink
+            else
+              a.panel__menu-link(href="#")
+                span.panel__menu-name!=item.name
+      .panel__city
+        button.panel__city-btn(type="button")
+          +svg('location')
+          span.panel__city-label Нижний Новгород
+      .panel__lk
+        button.panel__lk-btn(type="button")
+          +svg('people')
+          span.panel__lk-label Вход
+
